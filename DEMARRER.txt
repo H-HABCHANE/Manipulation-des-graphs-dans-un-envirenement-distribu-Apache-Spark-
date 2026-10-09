@@ -1,0 +1,21 @@
+SPARK SOCIAL GRAPH — COMMENCER ICI
+
+1. Extraire entièrement l'archive ZIP.
+2. Ouvrir un terminal dans le dossier spark-social-graph.
+3. Avec Docker et Docker Compose déjà installés, taper :
+
+   bash scripts/demo.sh
+
+4. Lire results/demo/rapport.md.
+
+Pour comprendre ensuite : docs/COMPRENDRE.md.
+Pour consulter les sorties déjà vérifiées : examples/verified/.
+Pour mesurer les performances sur votre PC : bash scripts/benchmark.sh.
+
+Le premier lancement télécharge l'image Spark et peut prendre quelques minutes.
+Aucun GPU et aucun service cloud payant ne sont nécessaires.
+
+Le code Scala, les tests et les exemples ont été exécutés avec Spark 3.5.3.
+Le lancement Docker a été vérifié sur le PC de l'auteur (examples/pc-local/).
+Voir docs/VALIDATION.md pour le périmètre exact des vérifications.
+

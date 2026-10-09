@@ -1,0 +1,13 @@
+services:
+  graph:
+    build:
+      context: .
+      args:
+        LOCAL_UID: ${LOCAL_UID:-1000}
+        LOCAL_GID: ${LOCAL_GID:-1000}
+    environment:
+      SPARK_MASTER: ${SPARK_MASTER:-local[2]}
+      DRIVER_MEMORY: ${DRIVER_MEMORY:-1g}
+    volumes:
+      - ./data:/app/data:ro
+      - ./results:/app/results

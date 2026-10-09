@@ -1,0 +1,4 @@
+master,vertices,edges,iterations,repeat,seconds,spark_version,java_version,partitions
+"local[4]",1000,8000,10,1,0.763844708,3.5.3,17.0.20,1
+"local[4]",1000,8000,10,2,0.626244661,3.5.3,17.0.20,1
+"local[4]",1000,8000,10,3,0.77095742,3.5.3,17.0.20,1

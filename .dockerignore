@@ -1,0 +1,6 @@
+target
+results
+.git
+data/generated
+examples
+*.zip
