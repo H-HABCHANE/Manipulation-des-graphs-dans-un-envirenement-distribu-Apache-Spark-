@@ -9,6 +9,16 @@ utilisateurs sont reliés par un chemin lorsque l'on ignore le sens des liens ?
 Il comprend un exemple de 20 utilisateurs, un générateur reproductible, des tests
 et un protocole de mesure du temps de calcul avec 1, 2 ou 4 cœurs Spark.
 
+**Deux versions dans ce dépôt :**
+
+| Version | Dossier | Algorithmes |
+|---|---|---|
+| Scala + GraphX (principale) | racine du dépôt | `staticPageRank`, `connectedComponents` de GraphX |
+| Python + PySpark | [`pyspark/`](pyspark/README.md) | écrits avec des DataFrames (GraphX n'a pas d'API Python) |
+
+Les deux versions lisent les mêmes données et produisent les mêmes résultats.
+Pour la version Python : `cd pyspark && bash scripts/demo.sh`.
+
 ## Démarrage rapide sur Ubuntu
 
 Prérequis : **Docker Engine et Docker Compose v2** déjà installés et accessibles
@@ -171,6 +181,7 @@ DRIVER_MEMORY=3g CORES='1 2 4' VERTICES=100000 REPEATS=3 ITERATIONS=20 bash scri
 - `examples/pc-local/` : résultats réels obtenus sur le PC de l'auteur (Docker, un seul hôte).
 - `examples/verified/` : exemple de l'environnement de préparation initial.
 - `Dockerfile`, `compose.yaml` : environnement reproductible.
+- `pyspark/` : la même analyse en Python avec PySpark (voir son README).
 
 ## Sans Docker, avec Spark installé
 

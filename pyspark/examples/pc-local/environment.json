@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-10",
+  "machine": "PC portable personnel (un seul hôte)",
+  "cpu_model": "Intel(R) Core(TM) i5-10310U CPU @ 1.70GHz",
+  "physical_cores": 4,
+  "logical_cpus": 8,
+  "ram_total": "14 GiB",
+  "os": "Linux, noyau 7.0.0-38-generic",
+  "docker": "29.9.0",
+  "docker_compose": "v5.6.0",
+  "image": "apache/spark:3.5.3-scala2.12-java17-python3-ubuntu",
+  "spark": "3.5.3",
+  "java": "17.0.12",
+  "python": "3.10.12",
+  "execution": "Docker Compose, mode local multicœur local[N] dans un conteneur ; pas de cluster",
+  "conditions": {"ac_power": true, "browser_open": true, "platform_profile": "balanced", "load_average_before": "2.9"},
+  "benchmark": {"vertices": 10000, "edges": 80000, "seed": 42, "iterations": 20, "warmups": 1, "repeats": 3, "cores": [1, 2, 4]},
+  "scala_comparison": "comparaison-scala-memes-conditions : version Scala/GraphX lancée juste après, mêmes données et mêmes conditions"
+}
