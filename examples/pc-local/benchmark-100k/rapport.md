@@ -5,9 +5,9 @@ Spark 3.5.3 ; Java 17.0.12. Un échauffement avant chaque série.
 
 | Cœurs Spark | Médiane (s) | Min (s) | Max (s) | Répétitions | Accélération | Efficacité |
 |---|---|---|---|---|---|---|
-| 1 | 6.152 | 5.926 | 6.245 | 3 | 1.00 | 100.0% |
-| 2 | 6.630 | 6.180 | 7.502 | 3 | 0.93 | 46.4% |
-| 4 | 6.445 | 6.290 | 7.437 | 3 | 0.95 | 23.9% |
+| 1 | 3.540 | 3.256 | 3.849 | 3 | 1.00 | 100.0% |
+| 2 | 3.942 | 3.653 | 4.345 | 3 | 0.90 | 44.9% |
+| 4 | 4.236 | 3.963 | 5.020 | 3 | 0.84 | 20.9% |
 
 Accélération = médiane à 1 cœur / médiane à p cœurs.
 Efficacité = accélération / p. Les cœurs désignent les threads de calcul autorisés à Spark.

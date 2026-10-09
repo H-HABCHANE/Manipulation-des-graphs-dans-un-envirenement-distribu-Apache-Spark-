@@ -128,18 +128,30 @@ de la machine ; répéter les campagnes et examiner la dispersion.
 ### Mesures réelles sur le PC de l'auteur
 
 Docker Compose, mode `local[N]` dans un conteneur sur **un seul ordinateur** (pas de cluster).
-Intel Core i5-10310U (4 cœurs / 8 threads), 14 Gio de RAM, Linux, sur batterie,
-gouverneur CPU `powersave`, navigateur ouvert (charge moyenne ≈ 4 avant les mesures).
-PageRank 20 itérations, graine 42, 1 échauffement puis 3 répétitions ; médianes en secondes.
+Intel Core i5-10310U (4 cœurs / 8 threads), 14 Gio de RAM, Linux, profil d'énergie `balanced`.
+PageRank 20 itérations, graine 42, 1 échauffement puis 3 répétitions ; médianes en secondes
+(accélération par rapport à 1 cœur entre parenthèses).
+
+**Série de référence : sur secteur, navigateurs fermés** (charge moyenne ≈ 1 au départ) :
 
 | Graphe | 1 cœur | 2 cœurs | 4 cœurs |
 |---|---|---|---|
-| 10 000 sommets, 80 000 liens | 2,546 | 3,117 (×0,82) | 2,883 (×0,88) |
-| 100 000 sommets, 800 000 liens | 6,152 | 6,630 (×0,93) | 6,445 (×0,95) |
+| 10 000 sommets, 80 000 liens | 1,338 | 1,908 (×0,70) | 1,901 (×0,70) |
+| 100 000 sommets, 800 000 liens | 3,540 | 3,942 (×0,90) | 4,236 (×0,84) |
 
-Sur cette machine et ces tailles, **ajouter des cœurs n'a pas accéléré PageRank** :
-le coût de coordination et d'échange entre partitions domine, et la machine
-n'était pas au repos. Détails : `examples/pc-local/benchmark-*/rapport.md`.
+Comparaison avec les autres conditions mesurées le même soir sur ce PC :
+
+| Graphe | Conditions | 1 cœur | 2 cœurs | 4 cœurs |
+|---|---|---|---|---|
+| 10 000 sommets | secteur, navigateurs ouverts | 1,248 | 1,755 | 1,974 |
+| 10 000 sommets | batterie, navigateurs ouverts | 2,546 | 3,117 | 2,883 |
+| 100 000 sommets | secteur, navigateurs ouverts | 3,711 | 3,887 | 4,234 |
+| 100 000 sommets | batterie, navigateurs ouverts | 6,152 | 6,630 | 6,445 |
+
+Sur batterie, les durées sont environ deux fois plus longues ; fermer les navigateurs
+ne change presque rien. Dans toutes les conditions, **ajouter des cœurs n'a pas accéléré
+PageRank** à ces tailles : le coût de coordination et d'échange entre partitions domine.
+Détails : `examples/pc-local/benchmark-*/` (référence) et `examples/pc-local/comparaison/`.
 
 Commandes exécutées :
 

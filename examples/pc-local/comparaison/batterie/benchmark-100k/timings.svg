@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="322" viewBox="0 0 800 322">
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<g font-family="sans-serif" fill="#152741">
+<text x="32" y="38" font-size="24">PageRank — durées médianes mesurées</text>
+<text x="32" y="63" font-size="14">Plus court = plus rapide · exécution locale multicœur</text>
+<text x="32" y="118">1 cœur(s)</text>
+<rect x="145" y="95" width="445.4" height="34" rx="6" fill="#176baf"/>
+<text x="600.4" y="118">6.152 s</text>
+<text x="32" y="182">2 cœur(s)</text>
+<rect x="145" y="159" width="480.0" height="34" rx="6" fill="#176baf"/>
+<text x="635.0" y="182">6.630 s</text>
+<text x="32" y="246">4 cœur(s)</text>
+<rect x="145" y="223" width="466.6" height="34" rx="6" fill="#176baf"/>
+<text x="621.6" y="246">6.445 s</text>
+</g></svg>

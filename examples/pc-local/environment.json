@@ -8,8 +8,6 @@
   "ram_total": "14 GiB",
   "cpu_governor": "powersave",
   "platform_profile": "balanced",
-  "ac_power": false,
-  "load_average_before_benchmarks": "4.2 à 4.8 (navigateur et applications de bureau ouverts)",
   "docker": "29.9.0",
   "docker_compose": "v5.6.0",
   "image": "apache/spark:3.5.3-scala2.12-java17-ubuntu",
@@ -17,7 +15,55 @@
   "java": "17.0.12",
   "execution": "Docker Compose, mode local multicœur local[N] dans un conteneur ; pas de cluster",
   "benchmarks": [
-    {"vertices": 10000, "edges": 80000, "seed": 42, "iterations": 20, "warmups": 1, "repeats": 3, "cores": [1, 2, 4], "driver_memory": "1g"},
-    {"vertices": 100000, "edges": 800000, "seed": 42, "iterations": 20, "warmups": 1, "repeats": 3, "cores": [1, 2, 4], "driver_memory": "3g"}
-  ]
+    {
+      "vertices": 10000,
+      "edges": 80000,
+      "seed": 42,
+      "iterations": 20,
+      "warmups": 1,
+      "repeats": 3,
+      "cores": [
+        1,
+        2,
+        4
+      ],
+      "driver_memory": "1g"
+    },
+    {
+      "vertices": 100000,
+      "edges": 800000,
+      "seed": 42,
+      "iterations": 20,
+      "warmups": 1,
+      "repeats": 3,
+      "cores": [
+        1,
+        2,
+        4
+      ],
+      "driver_memory": "3g"
+    }
+  ],
+  "benchmark_conditions": [
+    {
+      "folder": "benchmark-10k, benchmark-100k",
+      "reference": true,
+      "ac_power": true,
+      "browsers_open": false,
+      "load_average_before": "0.97"
+    },
+    {
+      "folder": "comparaison/secteur-navigateurs-ouverts",
+      "ac_power": true,
+      "browsers_open": true,
+      "load_average_before": "1.76"
+    },
+    {
+      "folder": "comparaison/batterie",
+      "ac_power": false,
+      "browsers_open": true,
+      "load_average_before": "4.2 à 4.8"
+    }
+  ],
+  "demo_run": "sur batterie, navigateurs ouverts (résultats fonctionnels, indépendants de l'alimentation)"
 }

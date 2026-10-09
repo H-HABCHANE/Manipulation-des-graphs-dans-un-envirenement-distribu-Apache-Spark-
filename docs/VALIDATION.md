@@ -41,8 +41,8 @@ lancée sur votre machine ; les mesures incluses portent sur 1 000 sommets.
 
 Machine : PC portable, Intel Core i5-10310U (4 cœurs / 8 threads), 14 Gio de RAM,
 Linux 7.0.0, Docker 29.9.0, Docker Compose v5.6.0. **Un seul hôte, pas de cluster.**
-Conditions : sur batterie, gouverneur CPU `powersave`, navigateur et applications
-ouverts (charge moyenne ≈ 4 avant les mesures). Détails : `examples/pc-local/environment.json`.
+Profil d'énergie `balanced`, gouverneur CPU `powersave`. Les conditions de chaque
+série de mesures sont indiquées ci-dessous. Détails : `examples/pc-local/environment.json`.
 
 - `bash scripts/demo.sh` : construction de l'image, `TESTS OK`, analyse de `data/demo`
   terminées avec succès (code de sortie 0).
@@ -52,10 +52,17 @@ ouverts (charge moyenne ≈ 4 avant les mesures). Détails : `examples/pc-local/
   Sara 6 abonnés, somme PageRank = 1.
 - Benchmarks PageRank réels à 1, 2 et 4 cœurs (20 itérations, graine 42,
   1 échauffement + 3 répétitions) sur 10 000 sommets / 80 000 liens et
-  100 000 sommets / 800 000 liens (`DRIVER_MEMORY=3g`). Résultats dans
-  `examples/pc-local/benchmark-10k/` et `examples/pc-local/benchmark-100k/`.
-  Aucune accélération observée sur cette machine : médianes 2,546 / 3,117 / 2,883 s
-  et 6,152 / 6,630 / 6,445 s pour 1 / 2 / 4 cœurs.
+  100 000 sommets / 800 000 liens (`DRIVER_MEMORY=3g`), dans trois conditions
+  successives. Médianes pour 1 / 2 / 4 cœurs :
+
+  | Conditions | 10 000 sommets (s) | 100 000 sommets (s) | Dossier |
+  |---|---|---|---|
+  | Secteur, navigateurs fermés (référence) | 1,338 / 1,908 / 1,901 | 3,540 / 3,942 / 4,236 | `examples/pc-local/benchmark-*` |
+  | Secteur, navigateurs ouverts | 1,248 / 1,755 / 1,974 | 3,711 / 3,887 / 4,234 | `examples/pc-local/comparaison/secteur-navigateurs-ouverts/` |
+  | Batterie, navigateurs ouverts | 2,546 / 3,117 / 2,883 | 6,152 / 6,630 / 6,445 | `examples/pc-local/comparaison/batterie/` |
+
+  Partitions = cœurs (1, 2, 4) dans toutes les séries. Aucune accélération observée ;
+  l'alimentation sur secteur divise les durées par environ 2.
 
 ### Corrections apportées lors de ces essais
 
